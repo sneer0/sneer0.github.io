@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="mdui-theme-html-auto">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" sizes="any" href="./favicon.png">
+  <title>sneer的主页</title>
+  <meta name="keywords" content="sneer,sneer0">
+  <meta name="description" property="og:description" content="sneer的个人主页" />
+  <meta name="author" content="sneer" />
+  <meta name="robots" content="all,follow">
+
+  <!--【https://ogp.me】-->
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:title" content="Edde 系列" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./favicon.png" />
+  <meta property="og:site_name" content="Edde 系列" />
+
+  <!--【Vue】-->
+  <!-- <script src="https://unpkg.com/vue@2.7.14/dist/vue.js"></script> -->
+  <script src="https://unpkg.com/vue@2.7.14/dist/vue.min.js"></script>
+
+  <!--【MDUI】-->
+  <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+  <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@mdi/font@7.2.96/css/materialdesignicons.min.css" />
+
+  <!--【sneer Library】-->
+  <link rel="stylesheet" href="/css/sneer.css" />
+  <script src="/js/sneer.js"></script>
+
+  <!--【当前页面】-->
+  <link rel="stylesheet" href="./css/index.css" />
+  <script src="./api/applications.json.js"></script>
+  <script src="./js/index.js"></script>
+
+  <script src="/baidutongji.js"></script>
+</head>
+
+<body class="mdui-appbar-with-toolbar mdui-theme-layout-auto">
+  <!--【这是Vue的】-->
+  <div id="app" class="mdui-container">
+    <!--【标题栏】-->
+    <nav class="mdui-appbar mdui-appbar-fixed" :class="{'mdui-appbar-lifted':!isTop}">
+      <div class="mdui-toolbar" :class="{'mdui-toolbar-lifted':!isTop}">
+        <h1 class="mdui-typo-title">Edde 系列</h1>
+        <div class="mdui-toolbar-spacer"></div>
+
+        <!--【菜单区域】-->
+        <template v-for="item in menus">
+          <a v-if="item.type=='menu'" :href="item.href" class="mdui-btn mdui-ripple mdui-hidden-xs-down"
+            :targrt="item.target">{{item.title}}</a>
+        </template>
+        <!--【更多菜单按钮】-->
+        <div class="mdui-btn mdui-btn-icon mdui-ripple" mdui-menu="{target: '#menu-more'}"
+          mdui-tooltip="{'content'}">
+          <i class="mdui-icon material-icons">more_vert</i>
+        </div>
+        <!--【弹出菜单】-->
+        <ul class="mdui-menu" id="menu-more">
+          <div>
+            <template v-for="item in menus">
+              <li v-if="item.type=='menu'" class="mdui-menu-item mdui-hidden-sm-up">
+                <a :href="item.href" class="mdui-ripple" :targrt="item.target">{{item.title}}</a>
+              </li>
+              <li v-else-if="item.type=='divider'" class="mdui-divider mdui-hidden-sm-up"></li>
+            </template>
+            <li class="mdui-divider mdui-hidden-sm-up"></li>
+            <li class="mdui-menu-item">
+              <a href= class="mdui-ripple" targrt="_blank" onclick="window.close();">关闭</a>
+              <!--【注释】打开网页
+              <a href="/rubbish.html" class="mdui-ripple" targrt="_blank">打开网页</a>
+             【注释】-->
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+
+    <!--【可扩展面板】-->
+    <section v-if="apps && apps.length!=0" id="mainlist" class="mdui-panel mdui-panel-gapless" mdui-panel>
+      <section v-for="group in apps" class="mdui-panel-item mdui-panel-item-open" open>
+        <!-- 面板header -->
+        <div class="mdui-panel-item-header mdui-ripple">
+          <div class="mdui-panel-item-title">{{group.name}}</div>
+          <i class="mdui-panel-item-arrow mdui-icon mdi mdi-chevron-down"></i>
+        </div>
+        <!--【面板body】-->
+        <div class="mdui-panel-item-body">
+          <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4">
+            <!--【单个卡片】-->
+            <template v-for="content in group.items">
+              <div class="mdui-col mdui-p-a-1">
+                <a :href="content.src " target="_blank">
+                  <div class="mdui-card-outlined mdui-hoverable-2 mdui-shadow-transition mdui-card mdui-ripple">
+                    <div class="mdui-card-media">
+                      <img class="card-image" :src="content.image" :alt="content.name" draggable="false" />
+                    </div>
+                    <div class="mdui-divider"></div>
+                    <div class="mdui-card-primary">
+                      <div class="mdui-card-primary-title">{{content.name}}</div>
+                      <div class="mdui-card-primary-subtitle">{{content.summary}}</div>
+                    </div>
+                    <i class="card-icon mdui-icon mdi" :class="[`mdi-${content.icon}`,content.dark&&'card-icon-dark']"
+                      :title="content['url-type']"></i>
+                  </div>
+                </a>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section v-if="links.length!=0" id="linkslist" class="mdui-panel mdui-panel-gapless jesse205-card-outlined"
+      mdui-panel>
+      <section class="mdui-panel-item mdui-panel-item-open">
+        <div class="mdui-panel-item-header mdui-ripple">
+          <div class="mdui-panel-item-title">社交媒体</div>
+          <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="mdui-panel-item-body mdui-p-x-1">
+          <div class="links">
+            <a v-for="item in links" class="mdui-btn mdui-ripple mdui-btn-outlined link-btn mdui-hoverable-4"
+              :href="item.href" target="_blank">{{item.name}}
+            </a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <!--【注释】分割波浪线
+      <img width="100%" src="./img/squiggle.svg" />
+     【注释】-->
+      <div class="copyrights mdui-typo">
+        <div>Copyright © sneer 2022-2023</div>
+      </div>
+    </footer>
+
+  </div>
+  <script>
+    vm.$mount('#app')
+  </script>
+</body>
+
+</html>
