@@ -15,7 +15,7 @@ let content = [
             {
                 "name": "留声机",
                 "id": "lsj",
-                "summary": "留住消逝的声音，让热爱音乐的人相遇~",
+                "summary": "留住消逝的声音。",
                 "image": "/images/graphs/aidelua.webp",
                 "src": "https://sneer0.github.io/lsj",
                 "icon": "home-outline",
