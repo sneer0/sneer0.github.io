@@ -7,7 +7,7 @@ let content = [
                 "name": "星火",
                 "id": "xh",
                 "summary": "轻度浏览，不沉迷！",
-                "image": "/images/graphs/aidelua.webp",
+                "image": "/img/111.png",
                 "src": "https://sneer0.github.io/xh",
                 "icon": "home-outline",
                 "url-type": "去下载"
