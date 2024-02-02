@@ -1,2 +1,0 @@
-【APP下载编辑路径：api\applications.json.js】
-【顶栏底栏编辑路径：js\index.js】
