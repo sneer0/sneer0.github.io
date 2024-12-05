@@ -1,0 +1,12 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <title>xh</title>
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <path stroke="#fff" filter="url(#svg_1_blur)" id="svg_1" d="m0.45455,114.24287l114.38229,0l35.34501,-114.24287l35.34503,114.24287l114.38227,0l-92.53705,70.60517l35.34684,114.24287l-92.53709,-70.60709l-92.53707,70.60709l35.34685,-114.24287l-92.53708,-70.60517z" fill="#e35144"/>
+ </g>
+ <defs>
+  <filter id="svg_1_blur">
+   <feGaussianBlur stdDeviation="0.1" in="SourceGraphic"/>
+  </filter>
+ </defs>
+</svg>

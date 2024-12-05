@@ -1,0 +1,40 @@
+items={}--复选框开始
+      table.insert(items,"❶集图：头像壁纸美图搜图 ⬇️")
+      table.insert(items,"❷悦耳：全网音乐免费欣赏 ⬇️")
+      table.insert(items,"❸乐读：免费小说在线阅读 ⬇️")
+      table.insert(items,"❹文案库：文案鸡汤彩虹屁 ⬇️")
+      table.insert(items,"❺休闲游戏：戒网瘾小游戏 ⬇️")
+      table.insert(items,"❻小说云盘：电子书下载库 ⬇️")
+      table.insert(items,"❼网购助手：羊毛捡漏省钱 ⬇️")
+      table.insert(items,"❽星火浏览器：绝对的神器 ⬇️")
+
+      AlertDialog.Builder(this)
+      .setTitle("更多应用推荐")--标题♥
+      .setItems(items,{onClick=function(l,v) 
+
+          if items[v+1]=="❶集图：头像壁纸美图搜图 ⬇️" then
+            进入子页面("浏览器",{标题="集图APP下载",链接="https://lanzoux.com/b06s39axa"})
+          end
+          if items[v+1]=="❷悦耳：全网音乐免费欣赏 ⬇️" then
+            进入子页面("浏览器",{标题="悦耳APP下载",链接="https://lanzoux.com/b06s3g0od"})
+          end
+          if items[v+1]=="❸乐读：免费小说在线阅读 ⬇️" then
+            进入子页面("浏览器",{标题="乐读APP下载",链接="https://lanzoux.com/b06s3111g"})
+          end
+          if items[v+1]=="❹文案库：文案鸡汤彩虹屁 ⬇️" then
+            进入子页面("浏览器",{标题="文案库APP下载",链接="https://lanzoux.com/b06s3vq9e"})
+          end
+          if items[v+1]=="❺休闲游戏：戒网瘾小游戏 ⬇️" then
+            进入子页面("浏览器",{标题="休闲游戏APP下载",链接="https://lanzoux.com/b06s2tmng"})
+          end
+          if items[v+1]=="❻小说云盘：电子书下载库 ⬇️" then
+            进入子页面("浏览器",{标题="小说云盘APP下载",链接="https://lanzoux.com/b06s2qekh"})
+          end
+          if items[v+1]=="❼网购助手：羊毛捡漏省钱 ⬇️" then
+            进入子页面("浏览器",{标题="网购助手APP下载",链接="https://lanzoux.com/b06sg7bdc"}) 
+          end
+          if items[v+1]=="❽星火浏览器：绝对的神器 ⬇️" then
+            进入子页面("浏览器",{标题="星火浏览器APP下载",链接="https://sneer.lanzoui.com/b06sn34sd"})
+          end
+        end})
+      .show()
